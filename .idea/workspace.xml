@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="141aedbb-4aac-4fa1-aa4b-e7d64498db0c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1XJ2tsg8QoS5ecAxJ81Y6aYKc9g" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SoftwareEngineering" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="DSA2.DictionaryFinder" />
+      <module name="DSA CW2" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="141aedbb-4aac-4fa1-aa4b-e7d64498db0c" name="Default Changelist" comment="" />
+      <created>1580750095382</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580750095382</updated>
+      <workItem from="1580750100574" duration="6059000" />
+      <workItem from="1580767447410" duration="6093000" />
+      <workItem from="1580837574204" duration="2566000" />
+      <workItem from="1580985849848" duration="10708000" />
+      <workItem from="1581093201946" duration="4525000" />
+      <workItem from="1581176319263" duration="75000" />
+      <workItem from="1581179151259" duration="51000" />
+      <workItem from="1581347153898" duration="5308000" />
+      <workItem from="1581365913080" duration="2216000" />
+      <workItem from="1581415954500" duration="2521000" />
+      <workItem from="1581432168295" duration="22000" />
+      <workItem from="1581432286592" duration="5615000" />
+      <workItem from="1581633970199" duration="788000" />
+      <workItem from="1581936483319" duration="36000" />
+      <workItem from="1582129129297" duration="21986000" />
+      <workItem from="1582314366078" duration="1204000" />
+      <workItem from="1582379020129" duration="7184000" />
+      <workItem from="1582481619330" duration="2377000" />
+      <workItem from="1582545965047" duration="61000" />
+      <workItem from="1582717906857" duration="4429000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="96" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582722502399">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="96" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1582722502399" />
+    <state x="446" y="78" key="#com.intellij.ide.util.MemberChooser" timestamp="1580987292230">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="446" y="78" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1580987292230" />
+    <state x="371" y="146" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1582722500656">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="371" y="146" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.720@0.0.1280.720" timestamp="1582722500656" />
+    <state x="421" y="116" key="FileChooserDialogImpl" timestamp="1582723571568">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="421" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1582723571568" />
+    <state width="1236" height="219" key="GridCell.Tab.0.bottom" timestamp="1582723572827">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="219" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
+    <state width="1236" height="219" key="GridCell.Tab.0.center" timestamp="1582723572827">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="219" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
+    <state width="1236" height="219" key="GridCell.Tab.0.left" timestamp="1582723572827">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="219" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
+    <state width="1236" height="219" key="GridCell.Tab.0.right" timestamp="1582723572827">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="219" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
+    <state width="1236" height="219" key="GridCell.Tab.1.bottom" timestamp="1582723572828">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="219" key="GridCell.Tab.1.bottom/0.0.1280.720@0.0.1280.720" timestamp="1582723572828" />
+    <state width="1236" height="219" key="GridCell.Tab.1.center" timestamp="1582723572827">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="219" key="GridCell.Tab.1.center/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
+    <state width="1236" height="219" key="GridCell.Tab.1.left" timestamp="1582723572827">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="219" key="GridCell.Tab.1.left/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
+    <state width="1236" height="219" key="GridCell.Tab.1.right" timestamp="1582723572827">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state width="1236" height="219" key="GridCell.Tab.1.right/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
+    <state x="337" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1582546015364">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="337" y="186" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1582546015364" />
+    <state x="91" y="0" key="new project wizard" timestamp="1581936515657">
+      <screen x="0" y="0" width="1280" height="720" />
+    </state>
+    <state x="91" y="0" key="new project wizard/0.0.1280.720@0.0.1280.720" timestamp="1581936515657" />
+  </component>
+</project>
