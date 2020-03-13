@@ -37,11 +37,11 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SoftwareEngineering" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="DSA2.DictionaryFinder" />
+      <option name="MAIN_CLASS_NAME" value="DSA2.AutoCompletionTrie" />
       <module name="DSA CW2" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
@@ -85,6 +85,8 @@
       <workItem from="1582481619330" duration="2377000" />
       <workItem from="1582545965047" duration="61000" />
       <workItem from="1582717906857" duration="4429000" />
+      <workItem from="1584015705849" duration="1688000" />
+      <workItem from="1584093669139" duration="2804000" />
     </task>
     <servers />
   </component>
@@ -92,38 +94,38 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582722502399">
+    <state x="96" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584099479572">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="96" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1582722502399" />
+    <state x="96" y="17" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.720@0.0.1280.720" timestamp="1584099479572" />
     <state x="446" y="78" key="#com.intellij.ide.util.MemberChooser" timestamp="1580987292230">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="446" y="78" key="#com.intellij.ide.util.MemberChooser/0.0.1280.720@0.0.1280.720" timestamp="1580987292230" />
-    <state x="371" y="146" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1582722500656">
+    <state x="371" y="146" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1584099477740">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="371" y="146" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.720@0.0.1280.720" timestamp="1582722500656" />
+    <state x="371" y="146" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1280.720@0.0.1280.720" timestamp="1584099477740" />
     <state x="421" y="116" key="FileChooserDialogImpl" timestamp="1582723571568">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="421" y="116" key="FileChooserDialogImpl/0.0.1280.720@0.0.1280.720" timestamp="1582723571568" />
-    <state width="1236" height="219" key="GridCell.Tab.0.bottom" timestamp="1582723572827">
+    <state width="1236" height="176" key="GridCell.Tab.0.bottom" timestamp="1584099482198">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1236" height="219" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
-    <state width="1236" height="219" key="GridCell.Tab.0.center" timestamp="1582723572827">
+    <state width="1236" height="176" key="GridCell.Tab.0.bottom/0.0.1280.720@0.0.1280.720" timestamp="1584099482198" />
+    <state width="1236" height="176" key="GridCell.Tab.0.center" timestamp="1584099482198">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1236" height="219" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
-    <state width="1236" height="219" key="GridCell.Tab.0.left" timestamp="1582723572827">
+    <state width="1236" height="176" key="GridCell.Tab.0.center/0.0.1280.720@0.0.1280.720" timestamp="1584099482198" />
+    <state width="1236" height="176" key="GridCell.Tab.0.left" timestamp="1584099482197">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1236" height="219" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
-    <state width="1236" height="219" key="GridCell.Tab.0.right" timestamp="1582723572827">
+    <state width="1236" height="176" key="GridCell.Tab.0.left/0.0.1280.720@0.0.1280.720" timestamp="1584099482197" />
+    <state width="1236" height="176" key="GridCell.Tab.0.right" timestamp="1584099482198">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state width="1236" height="219" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
+    <state width="1236" height="176" key="GridCell.Tab.0.right/0.0.1280.720@0.0.1280.720" timestamp="1584099482198" />
     <state width="1236" height="219" key="GridCell.Tab.1.bottom" timestamp="1582723572828">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -140,10 +142,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state width="1236" height="219" key="GridCell.Tab.1.right/0.0.1280.720@0.0.1280.720" timestamp="1582723572827" />
-    <state x="337" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1582546015364">
+    <state x="337" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1584093670366">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="337" y="186" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1582546015364" />
+    <state x="337" y="186" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1584093670366" />
     <state x="91" y="0" key="new project wizard" timestamp="1581936515657">
       <screen x="0" y="0" width="1280" height="720" />
     </state>

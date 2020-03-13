@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 public class DictionaryFinder {
     /**
@@ -43,21 +42,13 @@ public class DictionaryFinder {
     public LinkedHashMap<String,Integer> formDictionary(ArrayList<String> in){
         in.sort(String::compareTo);
         LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
-        String prev = "";
-        int count = 0;
-        for (int i = 0; i<in.size();i++){
-            if(prev.equals(in.get(i))){
-                count+=1;
-                //in.remove(i);
-            } else {
-                if (count !=0){
-                    map.put(in.get(i-1),count);
-                }
-                count = 1;
-                prev=in.get(i);
-            }
+        for (String word: in){
+           if(map.containsKey(word)){
+               map.put(word,map.get(word)+1);
+           } else {
+               map.put(word,1);
+           }
         }
-        map.put(in.get(in.size()-1),count);
         return map;
     }
     /**
@@ -69,7 +60,6 @@ public class DictionaryFinder {
         StringBuilder str = new StringBuilder();
         for (String key : map.keySet()) {
             str.append(key).append(",").append(map.get(key)).append("\n");
-            //System.out.println(key+ "=" + map.get(key));
         }
         try {
             FileWriter fileWriter = new FileWriter(fileToWriteTo);
@@ -80,51 +70,15 @@ public class DictionaryFinder {
         }
     }
     /**
-     * timing experiments
-     * @throws IOException
-     */
-    private static void timingExperiments() throws IOException, InterruptedException {
-        DictionaryFinder df=new DictionaryFinder();
-        ArrayList<Integer> time = new ArrayList<>();
-        TimeUnit.SECONDS.sleep(2);
-        for (int i = 1000;i<=100000;i+=1000){
-            long duration = 0;
-            for (int n = 0;n<5;n++){
-                ArrayList<String> in = Main.generateDoc(i,5);
-                long startTime = System.nanoTime();
-                df.formDictionary(in);
-                long endTime = System.nanoTime();
-                duration = duration + (endTime - startTime);
-            }
-            time.add((int)duration/5);
-        }
-        saveCollectionToFile(time,"ChangingNumberOfWords.csv");
-        ArrayList<Integer> timeTwo = new ArrayList<>();
-        for (int i = 1;i<=1000;i++){
-            long duration = 0;
-            for (int n = 0;n<5;n++){
-                ArrayList<String> in = Main.generateDoc(100,i);
-                long startTime = System.nanoTime();
-                df.formDictionary(in);
-                long endTime = System.nanoTime();
-                duration = duration + (endTime - startTime);
-            }
-            timeTwo.add((int)duration/5);
-        }
-        saveCollectionToFile(timeTwo,"ChangingWordLength.csv");
-        System.out.println("Done");
-    }
-    /**
      * Test harness
      * @param args
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-//        DictionaryFinder df=new DictionaryFinder();
-//        //ArrayList<String> in=readWordsFromCSV("C:\\Teaching\\2017-2018\\Data Structures and Algorithms\\Coursework 2\\test.txt");
-//        ArrayList<String> in=readWordsFromCSV("C:\\Users\\danny\\OneDrive\\Documents\\~Work\\DSA\\TextFiles\\testDocument.csv");
-//        LinkedHashMap<String,Integer> map = df.formDictionary(in);
-//        df.saveToFile(map,"C:\\Users\\danny\\OneDrive\\Documents\\~Work\\DSA\\TextFiles\\mytestDictionary.csv");
-        timingExperiments();
+        DictionaryFinder df=new DictionaryFinder();
+        //ArrayList<String> in=readWordsFromCSV("C:\\Teaching\\2017-2018\\Data Structures and Algorithms\\Coursework 2\\test.txt");
+        ArrayList<String> in=readWordsFromCSV("TextFiles\\testDocument.csv");
+        LinkedHashMap<String,Integer> map = df.formDictionary(in);
+        df.saveToFile(map,"TextFiles\\Results\\mytestDictionary.csv");
     }
 }

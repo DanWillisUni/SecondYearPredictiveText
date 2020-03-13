@@ -10,21 +10,18 @@ public class Main {
         DictionaryFinder df=new DictionaryFinder();
         ArrayList<String> in= new ArrayList<>();
         try {
-            in = DictionaryFinder.readWordsFromCSV("C:\\Users\\danny\\OneDrive\\Documents\\~Work\\DSA\\TextFiles\\lotr.csv");//reads from lotr into the arraylist in
+            in = DictionaryFinder.readWordsFromCSV("TextFiles\\lotr.csv");//reads from lotr into the arraylist in
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         LinkedHashMap<String,Integer> map = df.formDictionary(in); //form a dictionary with frequencies from the text file
-        df.saveToFile(map,"C:\\Users\\danny\\OneDrive\\Documents\\~Work\\DSA\\TextFiles\\myGollem.csv");//save the dictionary with frequencies
+        df.saveToFile(map,"TextFiles\\Results\\myGollem.csv");//save the dictionary with frequencies
         ArrayList<String> prefixes;
-        prefixes = AutoCompletionTrie.readWordsFromCSV("C:\\Users\\danny\\OneDrive\\Documents\\~Work\\DSA\\TextFiles\\lotrQueries.csv");//read in the prefixes
+        prefixes = AutoCompletionTrie.readWordsFromCSV("TextFiles\\lotrQueries.csv");//read in the prefixes
         for (String pre:prefixes){//for each prefix
             AutoCompletionTrie ACT = new AutoCompletionTrie(map,pre);//create new object
             LinkedHashMap<String,Double> pro = ACT.getTopThreeProbability();//get top three probabilities
-//            for (String key : pro.keySet()) {
-//                System.out.println(key+ "=" + pro.get(key));
-//            }
-            AutoCompletionTrie.saveToFile(pro,"C:\\Users\\danny\\OneDrive\\Documents\\~Work\\DSA\\TextFiles\\lotrMatches.csv");//save the probabilities to the file
+            AutoCompletionTrie.saveToFile(pro,"TextFiles\\Results\\mylotrMatches.csv");//save the probabilities to the file
         }
     }
     /**
