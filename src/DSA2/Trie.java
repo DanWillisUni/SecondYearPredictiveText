@@ -3,6 +3,7 @@ package DSA2;
 import java.util.*;
 
 public class Trie {
+//    2. Define a Trie data structure and class with a TrieNode as a root.
     private TrieNode root;//root of the trie
     /**
      * Test harness
@@ -41,6 +42,8 @@ public class Trie {
         this.root = root;
     }
     /**
+     * 1. boolean add(String key): adds a key to the trie, creating any nodes required and
+     * returns true if add was successful (i.e. returns false if key is already in the trie, true otherwise).
      * Adding a word to the trie
      * Checks if the word is already in the trie
      * Converts to lower case
@@ -66,6 +69,8 @@ public class Trie {
         return true;
     }
     /**
+     * 2. boolean contains(String key): returns true if the word passed is in the trie as a
+     * whole word, not just as a prefix
      * See if the word is in the trie
      * @param wordToSearch The word being looked for
      * @return true if the word is in the trie, false if not
@@ -83,6 +88,8 @@ public class Trie {
         return current.getIsWordEnd();
     }
     /**
+     * 3. String outputBreadthFirstSearch(): returns a string representing a breadth first
+     * traversal.
      * breadth first traversal of the trie
      * look at the root and get the children nodes and add them all to the queue
      * take off the queue then look at the children and add them to the queue
@@ -112,6 +119,8 @@ public class Trie {
         return str.toString();
     }
     /**
+     * 4. String outputDepthFirstSearch(): returns a string represenng a pre order depth
+     * first traversal.
      * Appends all the strings of the results of all the children together
      * @return output of depth first traversal
      */
@@ -144,6 +153,8 @@ public class Trie {
         return str.toString();
     }
     /**
+     * 5. Trie getSubTrie(String prefix): returns a new trie rooted at the prefix, or null if
+     * the prefix is not present in this trie
      * Traverse down the trie until the end of the prefix
      * create a new trie with the root being the current node
      * @param prefix prefix of the new sub trie
@@ -162,6 +173,7 @@ public class Trie {
         return new Trie(current);
     }
     /**
+     * 6. List getAllWords(): returns a list containing all words in the trie.
      * Do depth first traversal
      * keeps track of which nodes to do next with a stack
      * keep track of which nodes are done

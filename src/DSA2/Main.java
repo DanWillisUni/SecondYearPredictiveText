@@ -7,6 +7,8 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+//      1. read in a document of words, find the set of unique words to form a dictionary, count
+//      the occurrence of each word, then save the words and counts to file;
         DictionaryFinder df=new DictionaryFinder();
         ArrayList<String> in= new ArrayList<>();
         try {
@@ -16,9 +18,13 @@ public class Main {
         }
         LinkedHashMap<String,Integer> map = df.formDictionary(in); //form a dictionary with frequencies from the text file
         df.saveToFile(map,"TextFiles\\Results\\myGollem.csv");//save the dictionary with frequencies
+//      3. make a word completion system using the dictionary from part 1) and the data structure
+//      from part 2).
         ArrayList<String> prefixes;
         prefixes = AutoCompletionTrie.readWordsFromCSV("TextFiles\\lotrQueries.csv");//read in the prefixes
         for (String pre:prefixes){//for each prefix
+//          2. define a trie data structure for storing a prefix tree and design and implement algorithms
+//          to manipulate the trie; and
             AutoCompletionTrie ACT = new AutoCompletionTrie(map,pre);//create new object
             LinkedHashMap<String,Double> pro = ACT.getTopThreeProbability();//get top three probabilities
             AutoCompletionTrie.saveToFile(pro,"TextFiles\\Results\\mylotrMatches.csv");//save the probabilities to the file

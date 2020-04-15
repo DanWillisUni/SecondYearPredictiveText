@@ -10,6 +10,7 @@ import java.util.*;
 public class DictionaryFinder {
     /**
      * Reads all the words in a comma separated text document into an Array
+     * 1. read text document into a list of strings;
      * @param file
      */
     public static ArrayList<String> readWordsFromCSV(String file) throws FileNotFoundException {
@@ -36,6 +37,9 @@ public class DictionaryFinder {
     /**
      * Sorts the words into alphabetical order
      * if there is a repeat add it to the
+     * 2. form a set of words that exist in the document and count the number of times each word
+     * occurs in a method called FormDictionary;
+     * 3. sort the words alphabetically;
      * @param in all the words in total
      * @return each word, frequencies of each word
      */
@@ -53,6 +57,7 @@ public class DictionaryFinder {
     }
     /**
      * Saves the dictionary and frequencies to a file
+     * 4. write the words and associated frequency to file
      * @param map the dictionary with frequencies
      * @param fileToWriteTo the file to save to
      */
