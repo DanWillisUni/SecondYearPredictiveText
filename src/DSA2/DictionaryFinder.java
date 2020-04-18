@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class DictionaryFinder {
-    
+
     public DictionaryFinder(){
     }
     /**
@@ -54,40 +54,46 @@ public class DictionaryFinder {
      * occurs in a method called FormDictionary;
      * 3. sort the words alphabetically;
      *
-     * If there is a repeat add it to the current frequency count
-     * @param in all the words in total
-     * @return each word, frequencies of each word
+     * Sorts all the words into alphabetical order
+     * Keeps track of the previous word
+     * When the current word is different to the previous word put the previous word into the map with the frequency
+     *
+     * @param in all the words in
+     * @return each word, frequencies of each word in alphabetical order
      */
     public HashMap<String,Integer> formDictionary(ArrayList<String> in){
         in.sort(String::compareTo);//sorts all the words into alphabetical order
         HashMap<String, Integer> map = new HashMap<>();
         String prev = "";//keeps track of the previous word
-        int count = 0;
-        for (String word: in){
-            if (word == prev){
-                count+=1;
-            } else {
-                map.put(prev,count);
-                count = 1;
+        int frequency = 0;//sets the frequency to 0 to start
+        for (String word: in){//for each word in the array
+            if (word == prev){//if it is the same as the last, and therefore will already be added to the dictionary
+                frequency+=1;//add one to the frequency that will be added with it
+            } else {//the word has changed and being as the words are sorted alphabetically the previous word wont appear again in the list
+                if (frequency!=0){//this excludes the first time when the frequency is 0 and the prev is null
+                    map.put(prev,frequency);//puts the previous word in the map because it wont appear again
+                }
+                frequency = 1;//sets the frequency back to 1 being as it is a new word
             }
-            prev = word;
+            prev = word;//set the previous word to the current word for the next word
         }
-        map.put(prev,count);
+        map.put(prev,frequency);//after all the words are done the last word still isnt added as it only adds when the word changes therefore this line adds the last word alphabetically to the map
         return map;
     }
     /**
      * 4. write the words and associated frequency to file.
      *
-     * Saves the dictionary and frequencies to a file
+     * String builds the string to write to the file with a new line for each word
+     * Writes the string to the file specified
      * @param map the dictionary with frequencies
      * @param fileToWriteTo the file to save to
      */
     public void saveToFile(HashMap<String,Integer> map,String fileToWriteTo){
         StringBuilder str = new StringBuilder();
-        for (String key : map.keySet()) {
-            str.append(key).append(",").append(map.get(key)).append("\n");
+        for (String key : map.keySet()) {//goes through the map
+            str.append(key).append(",").append(map.get(key)).append("\n");//builds the string
         }
-        try {
+        try {//tries to write the string to the file
             FileWriter fileWriter = new FileWriter(fileToWriteTo);
             fileWriter.write(str.toString());
             fileWriter.close();
