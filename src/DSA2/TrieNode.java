@@ -63,14 +63,7 @@ public class TrieNode {
      * @return true if letter is a child
      */
     public boolean isChild(char letter){
-        for(TrieNode child:this.children){
-            if (child!=null){
-                if (child.getLetter()==letter){
-                    return true;
-                }
-            }
-        }
-        return false;
+        return getChildNode(letter)!=null;
     }
     /**
      * Null if no childnode of that letter
@@ -93,7 +86,7 @@ public class TrieNode {
      */
     public Boolean hasChildren(){
         for(int i = 0;i<26;i++){
-            if(isChild((char)(((int)'a')+i))){
+            if (this.children[i] != null){
                 return true;
             }
         }

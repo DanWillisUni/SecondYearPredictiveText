@@ -5,12 +5,20 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class DictionaryFinder {
+    
+    public DictionaryFinder(){
+    }
     /**
-     * Reads all the words in a comma separated text document into an Array
      * 1. read text document into a list of strings;
+     *
+     * Given
+     * Reads all the words in a comma separated text document into an Array
      * @param file
      */
     public static ArrayList<String> readWordsFromCSV(String file) throws FileNotFoundException {
@@ -26,6 +34,12 @@ public class DictionaryFinder {
         }
         return words;
     }
+    /**
+     * Given
+     * @param c
+     * @param file
+     * @throws IOException
+     */
     public static void saveCollectionToFile(Collection<?> c,String file) throws IOException {
         FileWriter fileWriter = new FileWriter(file);
         PrintWriter printWriter = new PrintWriter(fileWriter);
@@ -34,34 +48,41 @@ public class DictionaryFinder {
         }
         printWriter.close();
     }
+
     /**
-     * Sorts the words into alphabetical order
-     * if there is a repeat add it to the
      * 2. form a set of words that exist in the document and count the number of times each word
      * occurs in a method called FormDictionary;
      * 3. sort the words alphabetically;
+     *
+     * If there is a repeat add it to the current frequency count
      * @param in all the words in total
      * @return each word, frequencies of each word
      */
-    public LinkedHashMap<String,Integer> formDictionary(ArrayList<String> in){
-        in.sort(String::compareTo);
-        LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
+    public HashMap<String,Integer> formDictionary(ArrayList<String> in){
+        in.sort(String::compareTo);//sorts all the words into alphabetical order
+        HashMap<String, Integer> map = new HashMap<>();
+        String prev = "";//keeps track of the previous word
+        int count = 0;
         for (String word: in){
-           if(map.containsKey(word)){
-               map.put(word,map.get(word)+1);
-           } else {
-               map.put(word,1);
-           }
+            if (word == prev){
+                count+=1;
+            } else {
+                map.put(prev,count);
+                count = 1;
+            }
+            prev = word;
         }
+        map.put(prev,count);
         return map;
     }
     /**
+     * 4. write the words and associated frequency to file.
+     *
      * Saves the dictionary and frequencies to a file
-     * 4. write the words and associated frequency to file
      * @param map the dictionary with frequencies
      * @param fileToWriteTo the file to save to
      */
-    public void saveToFile(LinkedHashMap<String,Integer> map,String fileToWriteTo){
+    public void saveToFile(HashMap<String,Integer> map,String fileToWriteTo){
         StringBuilder str = new StringBuilder();
         for (String key : map.keySet()) {
             str.append(key).append(",").append(map.get(key)).append("\n");
@@ -74,16 +95,12 @@ public class DictionaryFinder {
             e.printStackTrace();
         }
     }
-    /**
-     * Test harness
-     * @param args
-     * @throws Exception
-     */
+
     public static void main(String[] args) throws Exception {
         DictionaryFinder df=new DictionaryFinder();
         //ArrayList<String> in=readWordsFromCSV("C:\\Teaching\\2017-2018\\Data Structures and Algorithms\\Coursework 2\\test.txt");
-        ArrayList<String> in=readWordsFromCSV("TextFiles\\testDocument.csv");
-        LinkedHashMap<String,Integer> map = df.formDictionary(in);
+        ArrayList<String> in=readWordsFromCSV("TextFiles\\testDocument.csv");//added to read in correct words
+        HashMap<String,Integer> map = df.formDictionary(in);
         df.saveToFile(map,"TextFiles\\Results\\mytestDictionary.csv");
     }
 }

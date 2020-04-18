@@ -46,7 +46,6 @@ public class Trie {
      * returns true if add was successful (i.e. returns false if key is already in the trie, true otherwise).
      * Adding a word to the trie
      * Checks if the word is already in the trie
-     * Converts to lower case
      * For each character in the word
      * Create child character if needed
      * then look at the child node
@@ -64,9 +63,9 @@ public class Trie {
                 current = current.getChildNode(wordToAdd.charAt(i));
             }
             current.setWordEnd(true);
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
     /**
      * 2. boolean contains(String key): returns true if the word passed is in the trie as a
@@ -79,11 +78,10 @@ public class Trie {
         TrieNode current = root;
         wordToSearch=wordToSearch.toLowerCase();
         for (char c:wordToSearch.toCharArray()) {
-            TrieNode node = current.getChildNode(c);
-            if (node == null) {
+            current = current.getChildNode(c);
+            if (current == null) {
                 return false;
             }
-            current = node;
         }
         return current.getIsWordEnd();
     }
