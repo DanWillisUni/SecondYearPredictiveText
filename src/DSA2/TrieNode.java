@@ -1,27 +1,23 @@
 package DSA2;
 
 public class TrieNode {
-//    1. Define a TrieNode data structure and class that contains a list of offspring and a flag
-//    to indicate whether the node represents a complete word or not. Offspring should be
-//    stored in an array of fixed size 26 and the char values of the characters in the trie used as
-//    the index. So, for example, the letter ‘a’ is represented by the position 0 in the offspring
-//    array. Hence, the root node for the trie shown in Figure 1 would contain a TrieNode array
-//    of size 26 with all null values except in positions 1 (‘b’) and 2 (‘c’).
-    private TrieNode[] children;
+    private TrieNode[] children;//the children
     private char letter;//value of the node
     private boolean isWordEnd;//boolean to tell if it is the end of the word
+
     /**
      * Constructor
      * @param letter value of the node
      */
     public TrieNode(char letter) {
-        this.children = new TrieNode[26];
+        this.children = new TrieNode[26];//constructs a new array of trie 26 trie nodes where all are set to null
         this.letter=letter;
         this.isWordEnd=false;
     }
-    //accessors
+    //Accessors
     /**
-     * Gets the children
+     * Gets the children array
+     *
      * @return children array
      */
     public TrieNode[] getChildren(){
@@ -29,6 +25,7 @@ public class TrieNode {
     }
     /**
      * Gets value of the node
+     *
      * @return the letter value
      */
     public char getLetter() {
@@ -36,14 +33,25 @@ public class TrieNode {
     }
     /**
      * Get end of word boolean
+     *
      * @return return if the node is an end of a word
      */
     public boolean getIsWordEnd(){
         return isWordEnd;
     }
-    //setters
+    /**
+     * Null if no child node of that letter
+     *
+     * @param letter the letter value of the child node
+     * @return TrieNode of the child node of letter
+     */
+    public TrieNode getChildNode(char letter){
+        return children[(int)letter-'a'];
+    }
+    //Modifiers
     /**
      * Set the is word End
+     *
      * @param isWordEnd what to set the isWordEnd to
      */
     public void setWordEnd(boolean isWordEnd){
@@ -51,37 +59,30 @@ public class TrieNode {
     }
     /**
      * Add a child
+     *
      * Create a new node
      * @param letter child letter
      */
     public void addChild(char letter){
         this.children[(int)letter-'a'] = new TrieNode(letter);
     }
+    //Methods
     /**
      * Checks if a letter is a child
+     *
      * @param letter letter to test
      * @return true if letter is a child
      */
     public boolean isChild(char letter){
-        return getChildNode(letter)!=null;
-    }
-    /**
-     * Null if no childnode of that letter
-     * @param letter the letter value of the child node
-     * @return TrieNode of the childnode of letter
-     */
-    public TrieNode getChildNode(char letter){
-        for(TrieNode tn:this.children){
-            if (tn!=null){
-                if (tn.getLetter()==letter){
-                    return tn;
-                }
-            }
-        }
-        return null;
+        return (getChildNode(letter)!=null);
     }
     /**
      * Determines if this node has any children
+     *
+     * For each letter in the alphabet
+     * If the children array is not null at that letter
+     * Return True
+     *
      * @return true if there is any children
      */
     public Boolean hasChildren(){

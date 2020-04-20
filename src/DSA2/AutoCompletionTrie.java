@@ -3,12 +3,6 @@ package DSA2;
 import java.io.*;
 import java.util.*;
 
-
-
-
-
-
-
 //    LinkedHashMap<String,Integer> dict;//dictionary, frequency
 //    String prefix;//the prefix that is being searched for
 //    Trie currentTrie;//trie that the prefix is on

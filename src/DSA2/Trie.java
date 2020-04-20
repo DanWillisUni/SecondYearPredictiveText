@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Trie {
     private TrieNode root;//root of the trie
+
     /**
      * Test harness
      * @param args
@@ -25,6 +26,7 @@ public class Trie {
         Trie sub = t.getSubTrie("ch");
         System.out.println("All words from sub trie: " + sub.getAllWords().toString());
     }
+
     /**
      * Constructor
      * For a trie that doesnt have any nodes on it already

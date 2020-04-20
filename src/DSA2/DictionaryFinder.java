@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class DictionaryFinder {
-
     public DictionaryFinder(){
     }
     /**
@@ -19,6 +18,7 @@ public class DictionaryFinder {
      *
      * Given
      * Reads all the words in a comma separated text document into an Array
+     *
      * @param file
      */
     public static ArrayList<String> readWordsFromCSV(String file) throws FileNotFoundException {
@@ -36,6 +36,7 @@ public class DictionaryFinder {
     }
     /**
      * Given
+     *
      * @param c
      * @param file
      * @throws IOException
@@ -102,6 +103,12 @@ public class DictionaryFinder {
         }
     }
 
+    /**
+     * Test Harness
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         DictionaryFinder df=new DictionaryFinder();
         //ArrayList<String> in=readWordsFromCSV("C:\\Teaching\\2017-2018\\Data Structures and Algorithms\\Coursework 2\\test.txt");
