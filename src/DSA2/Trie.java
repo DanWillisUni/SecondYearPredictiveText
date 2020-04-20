@@ -209,7 +209,7 @@ public class Trie {
      *
      * @return List containing all the words in the trie
      */
-    public List getAllWords(){
+    public List<String> getAllWords(){
         List words = new ArrayList();//create new list
         if (root.getIsWordEnd()){//This is so that when a prefix of a sub-trie is a whole word in the trie that word isnt missed out
             words.add("");

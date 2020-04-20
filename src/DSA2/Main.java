@@ -15,8 +15,8 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        HashMap<String,Number> map = df.formDictionary(in); //form a dictionary with frequencies from the text file
-        df.saveToFile(map,"TextFiles\\Results\\myGollem.csv");//save the dictionary with frequencies
+        HashMap<String,Number> wordsAndFreq = df.formDictionary(in); //form a dictionary with frequencies from the text file
+        df.saveToFile(wordsAndFreq,"TextFiles\\Results\\myGollem.csv");//save the dictionary with frequencies
         //2. construct a trie from the dictionary using your solution from part 2
         Trie t = new Trie();
         for (String word:in){
@@ -35,7 +35,7 @@ public class Main {
             System.out.println("For: " + pre);
             Trie subT = t.getSubTrie(pre);
             subT.getAllWords();//4.1. Recover all words matching the prefix from the trie.
-            AutoCompletionTrie ACT = new AutoCompletionTrie(map);//create new object
+            AutoCompletionTrie ACT = new AutoCompletionTrie(wordsAndFreq);//create new object
             HashMap<String,Number> pro = ACT.getTopThreeProbability(pre);//4.2. Choose the three most frequent words and display to standard output.
             DictionaryFinder.saveToFile(pro,"TextFiles\\Results\\mylotrMatches.csv");//4.3. Write the results to lotrMatches.csv
         }

@@ -13,7 +13,7 @@ public class AutoCompletionTrie{
      * @param dict dictionary with frequencies
      */
     public AutoCompletionTrie(HashMap<String,Number> dict){
-        root = new AutoCompletionTrieNode(' ');
+        root = new AutoCompletionTrieNode(' ',null);
         for (Map.Entry<String, Number> entry : dict.entrySet()) {//descend through the treemap
             this.add(entry.getKey(), (Integer) entry.getValue());
         }
@@ -27,7 +27,7 @@ public class AutoCompletionTrie{
      * Creates a TrieNode that is the root of the trie
      */
     public AutoCompletionTrie(){
-        root = new AutoCompletionTrieNode(' ');
+        root = new AutoCompletionTrieNode(' ',null);
     }
     /**
      * Constructor
@@ -203,84 +203,30 @@ public class AutoCompletionTrie{
      *
      * @return List containing all the words in the trie
      */
-    public HashMap<String,Integer> getAllWords(){
-        HashMap<String,Integer> words = new HashMap<>();//create new list
+    public LinkedHashMap<String,Integer> getAllWords(){
+        LinkedHashMap<String,Integer> words = new LinkedHashMap<>();//create new list
         if (root.getQuantityOfWordsEnding()>0){//This is so that when a prefix of a sub-trie is a whole word in the trie that word isnt missed out
             words.put("",root.getQuantityOfWordsEnding());
         }
-        LinkedList<AutoCompletionTrieNode> todo = new LinkedList<>();//create a new linked list which im using as a stack
-        todo = addAllChildNodesToStack(root,todo);//add all the child nodes of the root to the stack
-        ArrayList<AutoCompletionTrieNode> fullyProcessedNodes = new ArrayList<>();//create an array list of all the done nodes
-        LinkedList<AutoCompletionTrieNode> currentWord = new LinkedList<>();//current word is also a stack
-        while(todo.size()>0){//while there is still nodes to process
-            AutoCompletionTrieNode current = todo.peek();//peek at the top node on the stack to process
-            todo.remove();//remove the top node
-            todo = addAllChildNodesToStack(current,todo);//add all the children of the current node to the stack
-            //calculates the word by removing the correct letters from the word stack
-            while (currentWord.size()>0){//while the current word still has characters in
-                AutoCompletionTrieNode top = currentWord.peek();//peek at the top one
-                if (isNodeDoneWith(top,fullyProcessedNodes)){//if all the children have been done with or it has no children
-                    fullyProcessedNodes.add(top);//add to processed nodes
-                    currentWord.pop();//remove letter from the word stack
-                } else {
-                    break;//ends the while if the top letter is still valid and needs to stay there
-                }
-            }
-            //adds word to the all words list if it is the end of a word
-            currentWord.push(current);//push the current letter onto the stack
-            if (current.getQuantityOfWordsEnding()>0){//if its an end of a word
-                StringBuilder newWord = new StringBuilder();//creates a new string builder
-                for (AutoCompletionTrieNode node : currentWord) {//for all the nodes in the current word stack
-                    newWord.append(node.getLetter());//append to the word string the node letter
-                }
-                words.put(newWord.reverse().toString(),current.getQuantityOfWordsEnding());//add the new word string to the list
+        Queue q = new LinkedList<AutoCompletionTrieNode>();//make a queue with a linked list
+        addChildNodeToQueue(root,q);//adds the child nodes of the root to the queue
+        while(q.size()>0){//while there is still nodes in the queue
+            AutoCompletionTrieNode current = (AutoCompletionTrieNode) q.peek();//get first element
+            q.remove();//remove the first item in the queue
+            q = addChildNodeToQueue(current,q);//add all the child nodes of the current element to the queue
+            if (current.getQuantityOfWordsEnding()>0){
+                StringBuilder sb = new StringBuilder(getWordFromNode(current));
+                words.put(sb.reverse().toString(),current.getQuantityOfWordsEnding());
             }
         }
         return words;
     }
-    /**
-     * Helper function to get all words
-     *
-     * Get all the children
-     * Adds all the children of the node to the stack
-     *
-     * @param node node to add all the children
-     * @param stk stack to add all the children onto
-     * @return the new stack
-     */
-    private LinkedList<AutoCompletionTrieNode> addAllChildNodesToStack(AutoCompletionTrieNode node, LinkedList<AutoCompletionTrieNode> stk){
-        AutoCompletionTrieNode[] children = node.getChildren();//get the children
-        for (AutoCompletionTrieNode child:children){//for each child
-            if (child!=null){//if the child isnt null
-                stk.push(child);//push child onto the stack
-            }
+    String getWordFromNode(AutoCompletionTrieNode node){
+        String str = "";
+        if (node.getLetter()!=' '){
+            str += node.getLetter() + getWordFromNode(node.getParentNode());
         }
-        return stk;
-    }
-    /**
-     * Helper function to get all words
-     *
-     * Check if the node has children
-     * If it does, for each child
-     * If there is a child that isnt in the fully processed nodes array,
-     * then the node cannot be fully processed so return false
-     *
-     * @param node the node to work out if its done with
-     * @param fullyProcessedNodes the arraylist of fully processed nodes
-     * @return true if the node is done with in the word, false if not
-     */
-    private boolean isNodeDoneWith(AutoCompletionTrieNode node, ArrayList<AutoCompletionTrieNode> fullyProcessedNodes){
-        if (node.hasChildren()){//the top in current word has children
-            AutoCompletionTrieNode[] topChildren = node.getChildren();//get the children
-            for (AutoCompletionTrieNode topChild : topChildren) {//for all of the top nodes children
-                if (topChild != null) {
-                    if (!fullyProcessedNodes.contains(topChild)) {//if fully processed nodes doesnt contain a child of top
-                        return false;//we are not done with the top node
-                    }
-                }
-            }
-        }
-        return true;
+        return str;
     }
 
     //Additional
@@ -295,7 +241,7 @@ public class AutoCompletionTrie{
      *
      * @return the hashmap of the probability and word
      */
-    private HashMap<String,Number> getAllProbabilites(String prefix){
+    private LinkedHashMap<String,Number> getAllProbabilites(String prefix){
         AutoCompletionTrie subTrie = this.getSubTrie(prefix);//gets the list of words after the prefix that are in the subtrie
         int total = subTrie.root.getQuantityOfWordsEnding();
         Queue q = new LinkedList<AutoCompletionTrieNode>();//make a queue with a linked list
@@ -306,10 +252,14 @@ public class AutoCompletionTrie{
             q = addChildNodeToQueue(current,q);//add all the child nodes of the current element to the queue
             total += current.getQuantityOfWordsEnding();
         }
-        HashMap<String,Number> r = new HashMap<>();//create new hashmap to return
-        HashMap<String,Integer> allWords = subTrie.getAllWords();
-        for (Map.Entry<String,Integer> entry : allWords.entrySet()) {//descend through the treemap
-            r.put(prefix + entry.getKey(),(double) entry.getValue()/total);
+        LinkedHashMap<String,Number> r = new LinkedHashMap<>();//create new hashmap to return
+        LinkedHashMap<String,Integer> allWords = subTrie.getAllWords();
+        for (Map.Entry<String,Integer> entry : allWords.entrySet()) {//through the map
+            if (entry.getKey()==""){
+                r.put(prefix,(double) entry.getValue()/total);
+            } else {
+                r.put(entry.getKey(),(double) entry.getValue()/total);
+            }
         }
         return r;
     }
@@ -321,17 +271,22 @@ public class AutoCompletionTrie{
      *
      * @return linked hash map of the top three probabilities
      */
-    public HashMap<String,Number> getTopThreeProbability(String prefix){
-        HashMap<String,Number> r = new HashMap<>();//create new hashmap to return
-        HashMap<String,Number> all = getAllProbabilites(prefix);//get all the probabilies
-        TreeMap<String,Number> sorted = new TreeMap<>();//create a new treemap
-        sorted.putAll(all);//put all the probabilities into the treemap
+    public LinkedHashMap<String,Number> getTopThreeProbability(String prefix){
+        LinkedHashMap<String,Number> r = new LinkedHashMap<>();//create new hashmap to return
+        LinkedHashMap<String,Number> all = getAllProbabilites(prefix);//get all the probabilies
         int i = 0;
-        for (Map.Entry<String,Number> entry : sorted.descendingMap().entrySet()) {//descend through the treemap
-            if (i++ < 3) {//max of 3 times
-                r.put(entry.getKey(),entry.getValue());//put the entry into the hashmap to return
-                System.out.println(entry.getKey()+ "=" +entry.getValue());
+        while (all.size()>0&&i++<3){
+            double highestProbability = 0.0;
+            String highestKey = "";
+            for (String key : all.keySet()) {//goes through the map
+                if ((double) all.get(key)>highestProbability){
+                    highestProbability=(double) all.get(key);
+                    highestKey = key;
+                }
             }
+            r.put(highestKey,highestProbability);
+            System.out.println(highestKey + "=" + highestProbability);
+            all.remove(highestKey);
         }
         return r;
     }
@@ -341,15 +296,17 @@ class AutoCompletionTrieNode {
     private AutoCompletionTrieNode[] children;//the children
     private char letter;//value of the node
     private int quantityOfWordsEnding;
+    private AutoCompletionTrieNode parent;
 
     /**
      * Constructor
      * @param letter value of the node
      */
-    public AutoCompletionTrieNode(char letter) {
+    public AutoCompletionTrieNode(char letter,AutoCompletionTrieNode parent) {
         this.children = new AutoCompletionTrieNode[26];//constructs a new array of trie 26 trie nodes where all are set to null
         this.letter=letter;
         this.quantityOfWordsEnding =0;
+        this.parent = parent;
     }
     //Accessors
     /**
@@ -385,6 +342,9 @@ class AutoCompletionTrieNode {
     public AutoCompletionTrieNode getChildNode(char letter){
         return children[(int)letter-'a'];
     }
+    public AutoCompletionTrieNode getParentNode(){
+        return parent;
+    }
     //Modifiers
     /**
      * Add a child
@@ -393,7 +353,7 @@ class AutoCompletionTrieNode {
      * @param letter child letter
      */
     public void addChild(char letter){
-        this.children[(int)letter-'a'] = new AutoCompletionTrieNode(letter);
+        this.children[(int)letter-'a'] = new AutoCompletionTrieNode(letter,this);
     }
     /**
      * Change the number of words finishing at this node
