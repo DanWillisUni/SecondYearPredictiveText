@@ -62,9 +62,9 @@ public class DictionaryFinder {
      * @param in all the words in
      * @return each word, frequencies of each word in alphabetical order
      */
-    public HashMap<String,Integer> formDictionary(ArrayList<String> in){
+    public HashMap<String,Number> formDictionary(ArrayList<String> in){
         in.sort(String::compareTo);//sorts all the words into alphabetical order
-        HashMap<String, Integer> map = new HashMap<>();
+        HashMap<String, Number> map = new HashMap<>();
         String prev = "";//keeps track of the previous word
         int frequency = 0;//sets the frequency to 0 to start
         for (String word: in){//for each word in the array
@@ -89,7 +89,7 @@ public class DictionaryFinder {
      * @param map the dictionary with frequencies
      * @param fileToWriteTo the file to save to
      */
-    public void saveToFile(HashMap<String,Integer> map,String fileToWriteTo){
+    public static void saveToFile(HashMap<String, Number> map, String fileToWriteTo){
         StringBuilder str = new StringBuilder();
         for (String key : map.keySet()) {//goes through the map
             str.append(key).append(",").append(map.get(key)).append("\n");//builds the string
@@ -113,7 +113,7 @@ public class DictionaryFinder {
         DictionaryFinder df=new DictionaryFinder();
         //ArrayList<String> in=readWordsFromCSV("C:\\Teaching\\2017-2018\\Data Structures and Algorithms\\Coursework 2\\test.txt");
         ArrayList<String> in=readWordsFromCSV("TextFiles\\testDocument.csv");//added to read in correct words
-        HashMap<String,Integer> map = df.formDictionary(in);
+        HashMap<String,Number> map = df.formDictionary(in);
         df.saveToFile(map,"TextFiles\\Results\\mytestDictionary.csv");
     }
 }

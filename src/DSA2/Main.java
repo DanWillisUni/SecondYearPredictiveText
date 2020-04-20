@@ -3,13 +3,10 @@ package DSA2;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-//      1. read in a document of words, find the set of unique words to form a dictionary, count
-//      the occurrence of each word, then save the words and counts to file;
         DictionaryFinder df=new DictionaryFinder();
         ArrayList<String> in= new ArrayList<>();
         try {
@@ -17,22 +14,20 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        HashMap<String,Integer> map = df.formDictionary(in); //form a dictionary with frequencies from the text file
+        HashMap<String,Number> map = df.formDictionary(in); //form a dictionary with frequencies from the text file
         df.saveToFile(map,"TextFiles\\Results\\myGollem.csv");//save the dictionary with frequencies
-//      3. make a word completion system using the dictionary from part 1) and the data structure
-//      from part 2).
         ArrayList<String> prefixes = new ArrayList<>();
         try {
             prefixes = DictionaryFinder.readWordsFromCSV("TextFiles\\lotrQueries.csv");//read in the prefixes
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-//        for (String pre:prefixes){//for each prefix
-//            System.out.println("\nFor : " + pre);
+        for (String pre:prefixes){//for each prefix
+            System.out.println(pre);
 //            AutoCompletionTrie ACT = new AutoCompletionTrie(map,pre);//create new object
-//            LinkedHashMap<String,Double> pro = ACT.getTopThreeProbability();//get top three probabilities
-//            AutoCompletionTrie.saveToFile(pro,"TextFiles\\Results\\mylotrMatches.csv");//save the probabilities to the file
-//        }
+//            HashMap<String,Number> pro = ACT.getTopThreeProbability();//get top three probabilities
+            //DictionaryFinder.saveToFile(pro,"TextFiles\\Results\\mylotrMatches.csv");//save the probabilities to the file
+        }
     }
     /**
      * Generates a number of words of a set length
