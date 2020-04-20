@@ -127,7 +127,7 @@ public class Trie {
      * @param q queue to add them too
      * @return the queue with the child nodes added
      */
-    private Queue addChildNodeToQueue(TrieNode node,Queue q){
+    private Queue addChildNodeToQueue(TrieNode node, Queue q){
         TrieNode[] children = node.getChildren();//get all the children of the node
         for (TrieNode child:children) {//for each child
             if (child!=null){//if the child isnt null
@@ -254,7 +254,7 @@ public class Trie {
      * @param stk stack to add all the children onto
      * @return the new stack
      */
-    private LinkedList<TrieNode> addAllChildNodesToStack(TrieNode node,LinkedList<TrieNode> stk){
+    private LinkedList<TrieNode> addAllChildNodesToStack(TrieNode node, LinkedList<TrieNode> stk){
         TrieNode[] children = node.getChildren();//get the children
         for (TrieNode child:children){//for each child
             if (child!=null){//if the child isnt null
@@ -275,7 +275,7 @@ public class Trie {
      * @param fullyProcessedNodes the arraylist of fully processed nodes
      * @return true if the node is done with in the word, false if not
      */
-    private boolean isNodeDoneWith(TrieNode node,ArrayList<TrieNode> fullyProcessedNodes){
+    private boolean isNodeDoneWith(TrieNode node, ArrayList<TrieNode> fullyProcessedNodes){
         if (node.hasChildren()){//the top in current word has children
             TrieNode[] topChildren = node.getChildren();//get the children
             for (TrieNode topChild : topChildren) {//for all of the top nodes children

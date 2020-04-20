@@ -68,7 +68,7 @@ public class DictionaryFinder {
         String prev = "";//keeps track of the previous word
         int frequency = 0;//sets the frequency to 0 to start
         for (String word: in){//for each word in the array
-            if (word == prev){//if it is the same as the last, and therefore will already be added to the dictionary
+            if (word.equals(prev)){//if it is the same as the last, and therefore will already be added to the dictionary
                 frequency+=1;//add one to the frequency that will be added with it
             } else {//the word has changed and being as the words are sorted alphabetically the previous word wont appear again in the list
                 if (frequency!=0){//this excludes the first time when the frequency is 0 and the prev is null

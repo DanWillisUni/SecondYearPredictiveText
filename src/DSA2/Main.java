@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
+        //1. form a dictionary file of words and counts from the file lotr.csv
         DictionaryFinder df=new DictionaryFinder();
         ArrayList<String> in= new ArrayList<>();
         try {
@@ -16,17 +17,27 @@ public class Main {
         }
         HashMap<String,Number> map = df.formDictionary(in); //form a dictionary with frequencies from the text file
         df.saveToFile(map,"TextFiles\\Results\\myGollem.csv");//save the dictionary with frequencies
-        ArrayList<String> prefixes = new ArrayList<>();
+        //2. construct a trie from the dictionary using your solution from part 2
+        Trie t = new Trie();
+        for (String word:in){
+            t.add(word);
+        }
+        //3. load the prefixs from lotrQueries.csv
+        ArrayList<String> prefixLine = new ArrayList<>();
         try {
-            prefixes = DictionaryFinder.readWordsFromCSV("TextFiles\\lotrQueries.csv");//read in the prefixes
+            prefixLine = DictionaryFinder.readWordsFromCSV("TextFiles\\lotrQueries.csv");//read in the prefixes
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        String prefixes[] = prefixLine.get(0).split("\\r?\\n");
+        //4. for each prefix query
         for (String pre:prefixes){//for each prefix
-            System.out.println(pre);
-//            AutoCompletionTrie ACT = new AutoCompletionTrie(map,pre);//create new object
-//            HashMap<String,Number> pro = ACT.getTopThreeProbability();//get top three probabilities
-            //DictionaryFinder.saveToFile(pro,"TextFiles\\Results\\mylotrMatches.csv");//save the probabilities to the file
+            System.out.println("For: " + pre);
+            Trie subT = t.getSubTrie(pre);
+            subT.getAllWords();//4.1. Recover all words matching the prefix from the trie.
+            AutoCompletionTrie ACT = new AutoCompletionTrie(map);//create new object
+            HashMap<String,Number> pro = ACT.getTopThreeProbability(pre);//4.2. Choose the three most frequent words and display to standard output.
+            DictionaryFinder.saveToFile(pro,"TextFiles\\Results\\mylotrMatches.csv");//4.3. Write the results to lotrMatches.csv
         }
     }
     /**
