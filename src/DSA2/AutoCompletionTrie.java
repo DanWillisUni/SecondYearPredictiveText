@@ -269,7 +269,7 @@ public class AutoCompletionTrie{
      * @param node current node
      * @return the word as a string in reverse backtracking up through the parents
      */
-    String getWordFromNode(AutoCompletionTrieNode node){
+    private String getWordFromNode(AutoCompletionTrieNode node){
         String str = "";//new string to return
         if (node.getLetter()!=' '){//if node isnt the root node
             str += node.getLetter() + getWordFromNode(node.getParentNode());//add letter to string plus recursive call on the parant node
@@ -314,7 +314,7 @@ public class AutoCompletionTrie{
             //calculating the probabilities
             LinkedHashMap<String,Integer> allWords = subTrie.getAllWords();//gets all the words and frequencies
             for (Map.Entry<String,Integer> entry : allWords.entrySet()) {//through the map
-                if (entry.getKey()==""){//if the prefix was a word
+                if (entry.getKey().equals("")){//if the prefix was a word
                     r.put(prefix,(double) entry.getValue()/total);//put the prefix and frequencies divided by total in map
                 } else {
                     r.put(entry.getKey(),(double) entry.getValue()/total);//put the word and the frequencies difvided by the total in the map

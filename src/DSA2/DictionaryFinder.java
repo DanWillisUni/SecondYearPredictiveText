@@ -5,10 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class DictionaryFinder {
     public DictionaryFinder(){
@@ -118,6 +115,9 @@ public class DictionaryFinder {
 //      occurs in a method called FormDictionary;
 //      3. sort the words alphabetically;
         HashMap<String,Number> map = df.formDictionary(in);
+        for (Map.Entry<String,Number> entry : map.entrySet()) {//through the map
+            System.out.println(entry.getKey()+ "=" + entry.getValue());
+        }
 //      4. write the words and associated frequency to file.
         df.saveToFile(map,"TextFiles\\Results\\mytestDictionary.csv");
     }
