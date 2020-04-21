@@ -10,6 +10,14 @@ public class Trie {
      * @param args
      */
     public static void main(String[] args) {
+        System.out.println("Testing Part 2");
+//        1. Define a TrieNode data structure and class that contains a list of offspring and a flag
+//        to indicate whether the node represents a complete word or not. Offspring should be
+//        stored in an array of fixed size 26 and the char values of the characters in the trie used as
+//        the index. So, for example, the letter ‘a’ is represented by the position 0 in the offspring
+//        array. Hence, the root node for the trie shown in Figure 1 would contain a TrieNode array
+//        of size 26 with all null values except in positions 1 (‘b’) and 2 (‘c’).
+//        2. Define a Trie data structure and class with a TrieNode as a root.
         Trie t = new Trie();
         t.add("bat");
         t.add("cheese");

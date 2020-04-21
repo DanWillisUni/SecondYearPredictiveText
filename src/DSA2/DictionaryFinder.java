@@ -110,10 +110,15 @@ public class DictionaryFinder {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
+        System.out.println("Testing Part 1");
         DictionaryFinder df=new DictionaryFinder();
-        //ArrayList<String> in=readWordsFromCSV("C:\\Teaching\\2017-2018\\Data Structures and Algorithms\\Coursework 2\\test.txt");
-        ArrayList<String> in=readWordsFromCSV("TextFiles\\testDocument.csv");//added to read in correct words
+//      1. read text document into a list of strings;
+        ArrayList<String> in= df.readWordsFromCSV("TextFiles\\testDocument.csv");
+//      2. form a set of words that exist in the document and count the number of times each word
+//      occurs in a method called FormDictionary;
+//      3. sort the words alphabetically;
         HashMap<String,Number> map = df.formDictionary(in);
+//      4. write the words and associated frequency to file.
         df.saveToFile(map,"TextFiles\\Results\\mytestDictionary.csv");
     }
 }
