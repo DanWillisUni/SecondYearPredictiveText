@@ -59,9 +59,9 @@ public class DictionaryFinder {
      * @param in all the words in
      * @return each word, frequencies of each word in alphabetical order
      */
-    public HashMap<String,Number> formDictionary(ArrayList<String> in){
+    public LinkedHashMap<String,Number> formDictionary(ArrayList<String> in){
         in.sort(String::compareTo);//sorts all the words into alphabetical order
-        HashMap<String, Number> map = new HashMap<>();
+        LinkedHashMap<String, Number> map = new LinkedHashMap<>();
         String prev = "";//keeps track of the previous word
         int frequency = 0;//sets the frequency to 0 to start
         for (String word: in){//for each word in the array
@@ -114,7 +114,7 @@ public class DictionaryFinder {
 //      2. form a set of words that exist in the document and count the number of times each word
 //      occurs in a method called FormDictionary;
 //      3. sort the words alphabetically;
-        HashMap<String,Number> map = df.formDictionary(in);
+        LinkedHashMap<String,Number> map = df.formDictionary(in);
         for (Map.Entry<String,Number> entry : map.entrySet()) {//through the map
             System.out.println(entry.getKey()+ "=" + entry.getValue());
         }

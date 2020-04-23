@@ -16,7 +16,7 @@ public class Main {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        HashMap<String,Number> wordsAndFreq = df.formDictionary(in); //form a dictionary with frequencies from the text file
+        LinkedHashMap<String,Number> wordsAndFreq = df.formDictionary(in); //form a dictionary with frequencies from the text file
         df.saveToFile(wordsAndFreq,"TextFiles\\Results\\myGollem.csv");//save the dictionary with frequencies
         //2. construct a trie from the dictionary using your solution from part 2
         AutoCompletionTrie t = new AutoCompletionTrie(wordsAndFreq);
