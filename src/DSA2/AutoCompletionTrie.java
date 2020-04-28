@@ -5,7 +5,6 @@ import java.util.*;
 
 public class AutoCompletionTrie{
     private AutoCompletionTrieNode root;//root of the trie
-
     /**
      * Test harness
      * @param args

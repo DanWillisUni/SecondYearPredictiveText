@@ -14,9 +14,9 @@ public class Trie {
 //        1. Define a TrieNode data structure and class that contains a list of offspring and a flag
 //        to indicate whether the node represents a complete word or not. Offspring should be
 //        stored in an array of fixed size 26 and the char values of the characters in the trie used as
-//        the index. So, for example, the letter ‘a’ is represented by the position 0 in the offspring
+//        the index. So, for example, the letter 'a' is represented by the position 0 in the offspring
 //        array. Hence, the root node for the trie shown in Figure 1 would contain a TrieNode array
-//        of size 26 with all null values except in positions 1 (‘b’) and 2 (‘c’).
+//        of size 26 with all null values except in positions 1 ('b') and 2 ('c').
 //        2. Define a Trie data structure and class with a TrieNode as a root.
         Trie t = new Trie();
         t.add("bat");
@@ -51,6 +51,7 @@ public class Trie {
     public Trie(TrieNode root){
         this.root = root;
     }
+
     /**
      * 1. boolean add(String key): adds a key to the trie, creating any nodes required and
      * returns true if add was successful (i.e. returns false if key is already in the trie, true otherwise).
@@ -78,6 +79,7 @@ public class Trie {
         }
         return false;
     }
+
     /**
      * 2. boolean contains(String key): returns true if the word passed is in the trie as a
      * whole word, not just as a prefix
@@ -101,6 +103,7 @@ public class Trie {
         }
         return current.getIsWordEnd();//if all the characters are there
     }
+
     /**
      * 3. String outputBreadthFirstSearch(): returns a string representing a breadth first
      * traversal.
@@ -144,6 +147,7 @@ public class Trie {
         }
         return q;
     }
+
     /**
      * 4. String outputDepthFirstSearch(): returns a string representing a pre order depth
      * first traversal.
@@ -179,6 +183,7 @@ public class Trie {
         }
         return str.toString();
     }
+
     /**
      * 5. Trie getSubTrie(String prefix): returns a new trie rooted at the prefix, or null if
      * the prefix is not present in this trie
@@ -201,6 +206,7 @@ public class Trie {
         }
         return new Trie(current);//creates a new trie with the root being the current node
     }
+
     /**
      * 6. List getAllWords(): returns a list containing all words in the trie.
      *
